@@ -1,0 +1,132 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Sheridan Form
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Sheridan Form</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Sheridan ID</ion-label>
+        <ion-input type="text" formControlName="sheridanId"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.get('sheridanId')?.hasError('required') && form.get('sheridanId')?.touched">
+        Sheridan ID is required
+      </ion-text>
+  
+      <ion-item>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input type="text" formControlName="firstName"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.get('firstName')?.hasError('required') && form.get('firstName')?.touched">
+        First Name is required
+      </ion-text>
+  
+      <ion-item>
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input type="text" formControlName="lastName"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.get('lastName')?.hasError('required') && form.get('lastName')?.touched">
+        Last Name is required
+      </ion-text>
+  
+      <ion-item>
+        <ion-label>Campus</ion-label>
+      </ion-item>
+      <ion-radio-group formControlName="campus">
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-radio value="Trafalgar"></ion-radio>
+              <ion-label>Trafalgar</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-radio value="Davis"></ion-radio>
+              <ion-label>Davis</ion-label>              
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-radio value="HMC"></ion-radio>
+              <ion-label>HMC</ion-label>              
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+  
+     
+      <ion-item>
+        <ion-label>Select Department</ion-label>
+      </ion-item>
+      <ion-radio-group formControlName="department">
+        <ion-item>
+          <ion-radio value="FAAD"></ion-radio>
+          <ion-label>FAAD</ion-label>          
+        </ion-item>
+        <ion-item>
+          <ion-radio value="FAHCS"></ion-radio>
+          <ion-label>FAHCS</ion-label>          
+        </ion-item>
+        <ion-item>
+          <ion-radio value="FAST"></ion-radio>
+          <ion-label>FAST</ion-label>          
+        </ion-item>
+        <ion-item>
+          <ion-radio value="FHASS"></ion-radio>
+          <ion-label>FHASS</ion-label>          
+        </ion-item>
+        <ion-item>
+          <ion-radio value="PSB"></ion-radio>
+          <ion-label>PSB</ion-label>          
+        </ion-item>
+      </ion-radio-group>
+      
+      <ion-item>
+        <ion-label>Select Language of Correspondence</ion-label>
+      </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-checkbox (ionChange)="onLanguageChange($event, 'English')"></ion-checkbox>
+          <ion-label>English</ion-label>          
+        </ion-item>
+        <ion-item>
+          <ion-checkbox (ionChange)="onLanguageChange($event, 'French')"></ion-checkbox>
+          <ion-label>French</ion-label>          
+        </ion-item>
+        <ion-item>
+          <ion-checkbox (ionChange)="onLanguageChange($event, 'Both')"></ion-checkbox>
+          <ion-label>Both</ion-label>          
+        </ion-item>
+        <ion-item>
+          <ion-checkbox (ionChange)="onLanguageChange($event, 'Other')"></ion-checkbox>
+          <ion-label>Other</ion-label>          
+        </ion-item>
+      </ion-list> 
+      <ion-button type="submit" [disabled]="form.invalid"
+      >CREATE STUDENT RECORD</ion-button>
+    </form>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-title>
+          <p>App Name: {{ appName }}</p>
+          <p>Package: {{ packageName }}</p>
+          <p>Version Code: {{ versionCode }}</p>
+          <p>Version Number: {{ versionNumber }}</p>
+        </ion-title>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-content>
+  
+  
+  
+
